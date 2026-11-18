@@ -8,3 +8,4 @@
 - 2026-11-18 17:08 ccx *COUPLING/*DISTRIBUTING silently dropped MASS elements in *FREQUENCY -> *RIGID BODY + solver-mass self-check
 - 2026-11-18 17:15 benchmarks pass: cantilever tip -0.9 %, gravity -1.1 %, modal -0.3 %, tip-mass modal +0.0 %
 - 2026-11-18 17:20 vertical slice done: bracket (6061 + PLA) reports with setup/stress/displacement/mode pictures and A3 drawing
+- 2026-11-18 17:40 pushed to github.com/dt1729/freecad-harness (rebased on the LICENSE commit); pre-push privacy check clean
