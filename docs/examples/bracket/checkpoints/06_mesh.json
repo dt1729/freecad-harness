@@ -1,0 +1,13 @@
+{
+ "stage": "mesh",
+ "status": "ok",
+ "time": "2026-11-18T17:11:46",
+ "summary": {
+  "nodes": 20089,
+  "tets": 10855,
+  "boundary_tris": 5516,
+  "size_mm": 3.0,
+  "solids": 1
+ },
+ "problems": []
+}

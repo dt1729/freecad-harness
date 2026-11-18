@@ -1,0 +1,49 @@
+{
+ "overall": "red",
+ "failed": null,
+ "timings": {
+  "load": 0.08,
+  "materials": 0.0,
+  "setup": 0.83,
+  "validate": 0.01,
+  "mass": 0.0,
+  "mesh": 1.17,
+  "solve_static": 6.01,
+  "solve_modal": 6.68,
+  "review": 22.58,
+  "drawing": 0.85
+ },
+ "mass_kg": 0.24495577867857357,
+ "cases": [
+  {
+   "name": "hanging 15 kg",
+   "umax_mm": 0.3161329081939594,
+   "parts": [
+    {
+     "part": "Bracket",
+     "sf": 3.1484359278978045,
+     "vm": 7.940450615011365
+    }
+   ]
+  },
+  {
+   "name": "side knock + gravity",
+   "umax_mm": 0.143749998444,
+   "parts": [
+    {
+     "part": "Bracket",
+     "sf": 3.5130230366450044,
+     "vm": 7.116378042278771
+    }
+   ]
+  }
+ ],
+ "freqs": [
+  93.76279,
+  168.8813,
+  407.4695,
+  1106.884,
+  1449.094,
+  2942.284
+ ]
+}

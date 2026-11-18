@@ -1,0 +1,77 @@
+<!doctype html><html><head><meta charset='utf-8'><title>Design review: bracket_pla</title><style>body{font-family:system-ui,sans-serif;max-width:980px;margin:2em auto;padding:0 1em;color:#222;line-height:1.45}img{max-width:100%;border:1px solid #ddd;border-radius:6px}figure{margin:1em 0}figcaption{color:#555;font-size:.9em}table{border-collapse:collapse;margin:.5em 0}td,th{border:1px solid #ccc;padding:.25em .6em;text-align:left}.v{padding:.6em 1em;border-radius:6px;margin:.6em 0}.green{background:#e6f4e6}.amber{background:#fdf3d8}.red{background:#fbe3e3}pre{background:#f5f5f5;padding:.8em;overflow:auto}</style></head><body>
+<h1>Design review: bracket_pla</h1>
+<p>This report was generated automatically by <b>fcharness</b> from `bracket.step`. It is a first engineering look meant to help you decide - not a certification. Every number comes from a computer model with the assumptions listed at the end.</p>
+<h2>Verdict</h2>
+<div class='v red'>🔴 <b>Needs changes</b> — worst of the checks below (5 checked).</div>
+<h2>1. What was analysed</h2>
+<figure><img src='img/setup.png' alt='The model as the harness sees it. Blue faces are held fixed; orange faces carry the loads (arrows).'><figcaption>The model as the harness sees it. Blue faces are held fixed; orange faces carry the loads (arrows).</figcaption></figure>
+<table><tr><th>part</th><th>subassembly</th><th>material</th><th>mass (g)</th><th>size x×y×z (mm)</th></tr><tr><td>Bracket</td><td>-</td><td>PLA (FDM printed, ~100% infill)</td><td>45.0</td><td>80×40×70</td></tr><tr><td>sensor</td><td>(point mass)</td><td>-</td><td>200.0</td><td>-</td></tr></table>
+<p><b>Total mass 245.0 g</b>, centre of gravity at (40.0, 45.9, 50.7) mm.</p>
+<ul><li><b>Held:</b> bolt holes - `{&quot;cylinders&quot;: {&quot;diameter&quot;: 6.6}}`</li></ul>
+<ul><li><b>Load case &#x27;hanging 15 kg&#x27;:</b> pull: 150 N towards (0.00, 0.00, -1.00)</li></ul>
+<ul><li><b>Load case &#x27;side knock + gravity&#x27;:</b> knock: 40 N towards (1.00, 0.00, 0.00); gravity (0, 0, -1) g</li></ul>
+<ul><li><b>Carried mass:</b> sensor, 0.20 kg at (40.0, 50.0, 58.0) mm</li></ul>
+<h2>2.1 Strength and stiffness - load case &#x27;hanging 15 kg&#x27;</h2>
+<figure><img src='img/stress_lc1.png' alt='Where the material works hardest (red). The shape is exaggerated so you can see how it bends.'><figcaption>Where the material works hardest (red). The shape is exaggerated so you can see how it bends.</figcaption></figure>
+<div class='v green'>🟢 <b>Bracket: safety factor 3.1</b> — Strong enough: it could take about 3.1x this load before the material gives way.</div>
+<table><tr><th>part</th><th>highest stress (MPa)</th><th>peak incl. support edges</th><th>material can take (MPa)</th><th>safety factor</th><th>hot-spot at (mm)</th></tr><tr><td>Bracket</td><td>7.9</td><td>17.7</td><td>25</td><td>3.15</td><td>(60, 34, 7)</td></tr></table>
+<div class='v amber'>🟡 <b>Stiffness</b> — Noticeable flex: 0.32 mm. Check this is acceptable for alignment or optics. Largest movement at (40, 40, 70) mm.</div>
+<figure><img src='img/disp_lc1.png' alt='How far each point moves under this load case.'><figcaption>How far each point moves under this load case.</figcaption></figure>
+<p>Check: the supports push back with (0.0, 0.0, 150.0) N, balancing the applied (0.0, 0.0, -150.0) N (error 0.00%). Per support: bolt holes (0.0, 0.0, 150.0) N.</p>
+<h2>2.2 Strength and stiffness - load case &#x27;side knock + gravity&#x27;</h2>
+<figure><img src='img/stress_lc2.png' alt='Where the material works hardest (red). The shape is exaggerated so you can see how it bends.'><figcaption>Where the material works hardest (red). The shape is exaggerated so you can see how it bends.</figcaption></figure>
+<div class='v green'>🟢 <b>Bracket: safety factor 3.5</b> — Strong enough: it could take about 3.5x this load before the material gives way.</div>
+<table><tr><th>part</th><th>highest stress (MPa)</th><th>peak incl. support edges</th><th>material can take (MPa)</th><th>safety factor</th><th>hot-spot at (mm)</th></tr><tr><td>Bracket</td><td>7.1</td><td>7.1</td><td>25</td><td>3.51</td><td>(60, 34, 7)</td></tr></table>
+<div class='v green'>🟢 <b>Stiffness</b> — Stiff: it moves 0.144 mm under load (barely measurable). Largest movement at (60, 34, 70) mm.</div>
+<figure><img src='img/disp_lc2.png' alt='How far each point moves under this load case.'><figcaption>How far each point moves under this load case.</figcaption></figure>
+<p>Check: the supports push back with (-40.0, 0.0, 2.4) N, balancing the applied (40.0, 0.0, -2.4) N (error 0.00%). Per support: bolt holes (-40.0, 0.0, 2.4) N.</p>
+<h2>3. Vibration</h2>
+<figure><img src='img/modes.png' alt='The first natural vibration shapes. If something shakes the part near one of these frequencies, it can resonate.'><figcaption>The first natural vibration shapes. If something shakes the part near one of these frequencies, it can resonate.</figcaption></figure>
+<div class='v red'>🔴 <b>Lowest natural frequency 94 Hz</b> — Lowest mode 94 Hz sits at or below the 50-120 Hz excitation band: it can resonate (shake hard). Stiffen it or reduce the mass it carries.</div>
+<table><tr><th>mode</th><th>frequency (Hz)</th><th>main motion</th><th>which part flexes (strain energy)</th></tr><tr><td>1</td><td>93.8</td><td>front-to-back (y)</td><td>-</td></tr><tr><td>2</td><td>168.9</td><td>side-to-side (x)</td><td>-</td></tr><tr><td>3</td><td>407.5</td><td>up-and-down (z)</td><td>-</td></tr><tr><td>4</td><td>1106.9</td><td>side-to-side (x)</td><td>-</td></tr><tr><td>5</td><td>1449.1</td><td>up-and-down (z)</td><td>-</td></tr><tr><td>6</td><td>2942.3</td><td>up-and-down (z)</td><td>-</td></tr></table>
+<p><b>What to change:</b> to raise a frequency, make the part stiffer in the direction it moves in that mode (ribs, thicker walls, shorter overhangs) or make the carried mass lighter / closer to the supports.</p>
+<h2>4. Drawing</h2>
+<figure><img src='drawing.png' alt='Auto-generated drawing sheet (third-angle, scale 1:1). Full-resolution: drawing.pdf / drawing.svg.'><figcaption>Auto-generated drawing sheet (third-angle, scale 1:1). Full-resolution: drawing.pdf / drawing.svg.</figcaption></figure>
+<p><a href='drawing.pdf'>drawing.pdf</a> · <a href='drawing.svg'>drawing.svg</a> · the saved `model_with_analysis.FCStd` also contains an editable TechDraw page.</p>
+<h2>5. Assumptions and warnings</h2>
+<ul><li>Linear-elastic model: valid while nothing yields, buckles or slips. Supports are perfectly rigid (real ones flex a bit, which lowers frequencies slightly).</li><li>Touching parts are treated as glued together; bolt preload, friction and gaps are not modelled.</li><li>Printed plastics use the weaker across-layer (z) strength everywhere - conservative.</li><li>Stress right at the edge of a fixed face or at a sharp inside corner is not reliable; the safety factor uses the highest stress at least one element away from supports (the peak is shown for reference).</li><li>Mesh: 20090 nodes, 10856 quadratic tetrahedra, target size 3 mm. Halve size_mm and re-run to confirm results change by only a few %.</li></ul>
+<h2>6. Reproduce</h2>
+<p>Run `FCH_JOB=examples/bracket/job_pla.yaml fc run.py` from the repository. Every step&#x27;s inputs/outputs are in `checkpoints/`; solver decks and logs in `work/`.</p>
+<pre># Same bracket and loads as job.yaml, but 3D-printed in PLA instead of machined 6061.
+# Shows the trade-off a non-ME usually misses: the print is strong enough, yet ~20x less stiff,
+# so its first vibration mode drops into the motor&#x27;s excitation band.
+name: bracket_pla
+model: bracket.step
+default_material: pla_printed
+parts: {Bracket: {material: pla_printed, print_direction: z}}
+
+supports:
+  - name: bolt holes
+    type: fixed
+    where: {cylinders: {diameter: 6.6}}
+
+point_masses:
+  - name: sensor
+    mass_kg: 0.2
+    at: [40, 50, 58]
+    attach: {cylinders: {diameter: 8}}
+
+load_cases:
+  - name: hanging 15 kg
+    forces:
+      - name: pull
+        where: {cylinders: {diameter: 8}}
+        force_N: [0, 0, -150]
+  - name: side knock + gravity
+    gravity_g: [0, 0, -1]
+    forces:
+      - name: knock
+        where: {cylinders: {diameter: 8}}
+        force_N: [40, 0, 0]
+
+analyses: [static, modal]
+modal: {modes: 6, avoid_hz: [50, 120]}
+mesh: {size_mm: 3.0}
+drawing: {projection: third_angle, title: &quot;L-bracket, PLA print&quot;}
+</pre>
+</body></html>

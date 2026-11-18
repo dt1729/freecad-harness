@@ -1,0 +1,18 @@
+{
+ "stage": "setup",
+ "status": "ok",
+ "time": "2026-11-18T17:12:30",
+ "summary": {
+  "supports": {
+   "bolt holes": "Bracket: Face15, Face16 (2 faces, 249 mm^2)"
+  },
+  "forces": {
+   "hanging 15 kg / pull": "Bracket: Face18 (1 faces, 151 mm^2)",
+   "side knock + gravity / knock": "Bracket: Face18 (1 faces, 151 mm^2)"
+  },
+  "point_masses": {
+   "sensor": "Bracket: Face18 (1 faces, 151 mm^2)"
+  }
+ },
+ "problems": []
+}

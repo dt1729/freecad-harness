@@ -1,0 +1,29 @@
+{
+ "stage": "drawing",
+ "status": "ok",
+ "time": "2026-11-18T17:13:07",
+ "summary": {
+  "scale": 1,
+  "scale_text": "1:1",
+  "projection": "third_angle",
+  "views": {
+   "front": {
+    "view": "front",
+    "width": 80.0,
+    "height": 70.0
+   },
+   "top": {
+    "view": "top",
+    "width": 80.0,
+    "height": 40.0
+   },
+   "right": {
+    "view": "right",
+    "width": 40.0,
+    "height": 70.0
+   }
+  },
+  "techdraw_page_in_fcstd": true
+ },
+ "problems": []
+}

@@ -1,0 +1,35 @@
+# Example job: an aluminium L-bracket bolted down with two M6 bolts, carrying a 0.2 kg sensor on a
+# pin through the d8 hole. Read top to bottom - every line is plain geometry, no face numbers.
+name: bracket
+model: bracket.step
+default_material: al_6061_t6
+
+supports:
+  - name: bolt holes
+    type: fixed
+    where: {cylinders: {diameter: 6.6}}      # both M6 clearance holes
+
+point_masses:
+  - name: sensor
+    mass_kg: 0.2
+    at: [40, 50, 58]                         # its centre of gravity, 10 mm behind the upright
+    attach: {cylinders: {diameter: 8}}       # hangs on a pin in the d8 hole
+
+load_cases:
+  - name: hanging 15 kg
+    forces:
+      - name: pull
+        where: {cylinders: {diameter: 8}}
+        force_N: [0, 0, -150]
+  - name: side knock + gravity
+    gravity_g: [0, 0, -1]
+    forces:
+      - name: knock
+        where: {cylinders: {diameter: 8}}
+        force_N: [40, 0, 0]
+
+analyses: [static, modal]
+modal: {modes: 6, avoid_hz: [50, 120]}       # e.g. a motor running 3000-7200 rpm nearby
+mesh: {size_mm: 3.0}
+checks: {safety_factor_target: 2.0, safety_factor_min: 1.5}
+drawing: {projection: third_angle, title: "L-bracket, 6061-T6"}

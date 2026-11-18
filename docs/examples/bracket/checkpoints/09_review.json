@@ -1,0 +1,61 @@
+{
+ "stage": "review",
+ "status": "ok",
+ "time": "2026-11-18T17:12:22",
+ "summary": {
+  "cases": [
+   {
+    "name": "hanging 15 kg",
+    "equilibrium_err": 1.2644264367425765e-12,
+    "umax_mm": 0.016132855443935095,
+    "parts": [
+     {
+      "part": "Bracket",
+      "allowable_MPa": 276.0,
+      "vm_peak_MPa": 17.667978871379148,
+      "vm_MPa": 8.001348886889868,
+      "sf": 34.49418390594407,
+      "hotspot_mm": [
+       60.0,
+       34.0,
+       7.454545454545456
+      ],
+      "level": "green"
+     }
+    ]
+   },
+   {
+    "name": "side knock + gravity",
+    "equilibrium_err": 4.8051571725299134e-05,
+    "umax_mm": 0.007328927971688629,
+    "parts": [
+     {
+      "part": "Bracket",
+      "allowable_MPa": 276.0,
+      "vm_peak_MPa": 7.183451177384795,
+      "vm_MPa": 7.183451177384795,
+      "sf": 38.42164346698887,
+      "hotspot_mm": [
+       58.9959688752776,
+       34.0,
+       7.018598292873932
+      ],
+      "level": "green"
+     }
+    ]
+   }
+  ],
+  "modal": {
+   "freqs": [
+    406.4887,
+    739.7997,
+    1767.558,
+    3350.529,
+    4358.469,
+    8910.511
+   ],
+   "level": "green"
+  }
+ },
+ "problems": []
+}

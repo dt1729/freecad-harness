@@ -1,0 +1,36 @@
+# Same bracket and loads as job.yaml, but 3D-printed in PLA instead of machined 6061.
+# Shows the trade-off a non-ME usually misses: the print is strong enough, yet ~20x less stiff,
+# so its first vibration mode drops into the motor's excitation band.
+name: bracket_pla
+model: bracket.step
+default_material: pla_printed
+parts: {Bracket: {material: pla_printed, print_direction: z}}
+
+supports:
+  - name: bolt holes
+    type: fixed
+    where: {cylinders: {diameter: 6.6}}
+
+point_masses:
+  - name: sensor
+    mass_kg: 0.2
+    at: [40, 50, 58]
+    attach: {cylinders: {diameter: 8}}
+
+load_cases:
+  - name: hanging 15 kg
+    forces:
+      - name: pull
+        where: {cylinders: {diameter: 8}}
+        force_N: [0, 0, -150]
+  - name: side knock + gravity
+    gravity_g: [0, 0, -1]
+    forces:
+      - name: knock
+        where: {cylinders: {diameter: 8}}
+        force_N: [40, 0, 0]
+
+analyses: [static, modal]
+modal: {modes: 6, avoid_hz: [50, 120]}
+mesh: {size_mm: 3.0}
+drawing: {projection: third_angle, title: "L-bracket, PLA print"}

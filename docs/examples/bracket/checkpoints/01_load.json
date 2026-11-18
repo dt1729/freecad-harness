@@ -1,0 +1,16 @@
+{
+ "stage": "load",
+ "status": "ok",
+ "time": "2026-11-18T17:11:43",
+ "summary": {
+  "parts": [
+   {
+    "label": "Bracket",
+    "group": "",
+    "faces": 18,
+    "volume_mm3": 36254.6602246561
+   }
+  ]
+ },
+ "problems": []
+}
