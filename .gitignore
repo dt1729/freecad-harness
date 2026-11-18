@@ -8,3 +8,4 @@ docs/examples/*/run.log
 docs/examples/*/*.FCStd
 tools/probe_env.json
 *.FCBak
+examples/*/bracket_info.txt
