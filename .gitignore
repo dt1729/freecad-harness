@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+# run outputs (example reports are generated into docs/examples instead)
+out/
+tests/bench_out/
+docs/examples/*/work/
+docs/examples/*/run.log
+docs/examples/*/*.FCStd
+tools/probe_env.json
+*.FCBak
