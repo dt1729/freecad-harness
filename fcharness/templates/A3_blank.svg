@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:freecad="http://www.freecad.org/wiki/index.php?title=Svg_Namespace"
+     width="420mm" height="297mm" viewBox="0 0 420 297" version="1.1">
+  <rect x="10" y="10" width="400" height="277" fill="none" stroke="#000" stroke-width="0.5"/>
+  <rect x="230" y="242" width="180" height="45" fill="none" stroke="#000" stroke-width="0.35"/>
+  <text x="233" y="252" font-family="sans-serif" font-size="5" freecad:editable="title">fcharness drawing</text>
+</svg>
